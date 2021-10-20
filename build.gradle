@@ -1,0 +1,36 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:_"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:_"
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:_"
+        classpath "io.gitlab.arturbosch.detekt:detekt-formatting:_"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    project.ext {
+        lintAndroid = "${project.rootDir}/settings/config/quality/lint/lint_android.gradle"
+        detekt = "${project.rootDir}/settings/config/quality/detekt/detekt.gradle"
+        qualityDir ="${project.rootDir}/settings/config/quality"
+        reportDir = "${project.rootDir}/settings/reports"
+        compileSdkVersion = 30
+        minSdkVersion = 26
+        targetSdkVersion = 30
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+

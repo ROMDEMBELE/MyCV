@@ -1,0 +1,14 @@
+android {
+    lintOptions {
+        checkDependencies true
+        xmlReport true
+        htmlReport true
+        explainIssues true
+        lintConfig file("${project.qualityDir}/lint/lint.xml")
+        htmlOutput = new File("${project.reportDir}/lint/${project.name}.html")
+        xmlOutput = new File("${project.reportDir}/lint/${project.name}.xml")
+    }
+}
+
+
+

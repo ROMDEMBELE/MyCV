@@ -1,0 +1,11 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+apply from: project.detekt
+
+dependencies{
+
+}
+

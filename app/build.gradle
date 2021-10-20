@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply from: project.lintAndroid
+apply from: project.detekt
+
+def getVersionCode = { ->
+    try {
+        def code = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'log', '-1', '--format=%ct'
+            standardOutput = code
+        }
+        return Integer.parseInt(code.toString().trim())
+    }
+    catch (ignored) {
+        return -1
+    }
+}
+
+def getVersionName = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--tags', '--dirty'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
+    catch (ignored) {
+        return null
+    }
+}
+
+android {
+    compileSdkVersion project.compileSdkVersion
+    defaultConfig {
+        applicationId "com.diabeloop.architecturesample"
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode getVersionCode()
+        versionName getVersionName()
+    }
+
+    flavorDimensions "branch"
+
+    productFlavors {
+
+        mock {
+            dimension "branch"
+        }
+
+        external {
+            dimension "branch"
+        }
+
+    }
+
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        if (names.contains("mock")
+                && buildType.name == "release") {
+            ignore = true
+        }
+    }
+}
+
+dependencies {
+    implementation project(":domain")
+    externalImplementation project(":data")
+    mockImplementation project(":data-mock")
+
+    implementation "androidx.appcompat:appcompat:_"
+}
