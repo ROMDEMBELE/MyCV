@@ -4,15 +4,13 @@
 
     <application
         android:allowBackup="false"
+        android:name="com.diabeloop.sample.architecture.ArchitectureSampleApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="com.diabeloop.sample.architecture.HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.diabeloop.sample.architecture.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

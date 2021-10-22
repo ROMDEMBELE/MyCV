@@ -22,7 +22,7 @@ dependencies {
 
     implementation "androidx.room:room-ktx:_"
     kapt "androidx.room:room-compiler:_"
-    implementation "androidx.room:room-runtime:_"
+    api "androidx.room:room-runtime:_"
 
     implementation "com.google.dagger:hilt-android:_"
     kapt("com.google.dagger:hilt-android-compiler:_")

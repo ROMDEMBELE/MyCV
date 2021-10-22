@@ -4,31 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="userFormModel"
             type="com.diabeloop.sample.architecture.user.UserFormModel" />
+
+        <variable
+            name="saveUserButtonListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_green_light"
         tools:context="com.diabeloop.sample.architecture.user.UserFormFragment">
 
         <TextView
+            android:id="@+id/save_user_title"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:text="@string/fragment_form_user_title"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/first_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:error="@{userFormModel.firstNameError}"
+            app:layout_constraintTop_toBottomOf="@id/save_user_title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:text="@{userFormModel.firstName}"
+                android:text="@={userFormModel.firstName}"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -37,14 +46,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            app:error="@{userFormModel.lastNameError}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/first_name_input">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:text="@{userFormModel.lastName}"
+                android:text="@={userFormModel.lastName}"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/save_user_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:onClick="@{() -> saveUserButtonListener}"
+            android:text="@string/fragment_user_form_save_user_button"
+            app:layout_constraintTop_toBottomOf="@id/last_name_input" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
