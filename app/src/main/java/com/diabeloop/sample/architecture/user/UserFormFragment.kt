@@ -17,13 +17,13 @@ class UserFormFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val binding = FragmentUserFormBinding.inflate(inflater, container, false)
 
         binding.userFormModel = this.userFormViewModel.userFormModel
 
-        binding.saveUserButtonListener = View.OnClickListener {
+        binding.setSaveUserButtonListener {
             userFormViewModel.saveUser()
         }
 
