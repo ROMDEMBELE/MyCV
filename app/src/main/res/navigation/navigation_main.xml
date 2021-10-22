@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/userFormFragment">
+
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.diabeloop.sample.architecture.user.UserListFragment"
+        android:label="fragment_user_list"
+        tools:layout="@layout/fragment_user_list" />
+    <fragment
+        android:id="@+id/userFormFragment"
+        android:name="com.diabeloop.sample.architecture.user.UserFormFragment"
+        android:label="fragment_user_form"
+        tools:layout="@layout/fragment_user_form" >
+        <action
+            android:id="@+id/action_userFormFragment_to_userListFragment"
+            app:destination="@id/userListFragment" />
+    </fragment>
+</navigation>

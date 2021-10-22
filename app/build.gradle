@@ -47,6 +47,11 @@ android {
         versionName getVersionName()
     }
 
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
     flavorDimensions "branch"
 
     productFlavors {
@@ -68,10 +73,20 @@ android {
             ignore = true
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
     implementation project(":domain")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     externalImplementation project(":data")
     mockImplementation project(":data-mock")
 

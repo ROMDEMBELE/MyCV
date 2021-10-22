@@ -7,16 +7,16 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class UserRepositoryImpl : UserRepository {
-    override fun save(user: User) {
+    override suspend fun save(user: User) {
 
     }
 
     override fun getList(): Flow<List<User>> = flow {
         emit(
             listOf(
-                User("Jone", "Doe"),
-                User("Dragon", "3_têtes", DiabetesType.TYPE_2),
-                User("Gilles", "Gaillardon", DiabetesType.TYPE_1)
+                User(0, "Jone", "Doe"),
+                User(1, "Dragon", "3_têtes", DiabetesType.TYPE_2),
+                User(2, "Gilles", "Gaillardon", DiabetesType.TYPE_1)
             )
         )
     }
