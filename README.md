@@ -70,7 +70,7 @@ In "data" module packages are organized by type
        fun <Type>ToInt(type: <Type>): Int = ...
        ```
 
-    2. Declare new Dao (CRUD???) & Add it to the Database
+    2. Declare new Dao & Add it to the Database
        ```
        @Dao
        interface <ModelName>Dao { }

@@ -5,9 +5,13 @@ import com.diabeloop.sample.architecture.domain.user.DiabetesType
 
 class Converter {
     @TypeConverter
-    fun intToDiabetesType(ordinal: Int): DiabetesType = DiabetesType.values()[ordinal]
+    fun intToDiabetesType(ordinal: Int?): DiabetesType? =
+        ordinal?.let {
+            DiabetesType.values().getOrNull(ordinal)
+        } ?: run {
+            null
+        }
 
     @TypeConverter
-    fun diabetesTypeToInt(diabetesType: DiabetesType): Int = diabetesType.ordinal
-
+    fun diabetesTypeToInt(ordinal: DiabetesType?): Int? = ordinal?.ordinal
 }
