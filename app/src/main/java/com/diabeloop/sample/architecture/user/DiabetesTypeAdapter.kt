@@ -16,19 +16,17 @@ class DiabetesTypeAdapter(context: Context) : ArrayAdapter<DiabetesType>(context
 
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-
         val binding = convertView?.let {
-            ItemDiabetesTypeDropDownBinding.bind(it)
+            it.tag as ItemDiabetesTypeDropDownBinding
         } ?: run {
             ItemDiabetesTypeDropDownBinding.inflate(
                 LayoutInflater.from(context),
                 parent, false
             )
         }
-
         binding.message = getItem(position)?.displayMessage(context.resources)
         binding.iconRes = getItem(position)?.displayIcon(context.resources)
-
+        binding.root.tag = binding
         return binding.root
     }
 
