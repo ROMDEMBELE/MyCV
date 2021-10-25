@@ -5,4 +5,6 @@
     <string name="fragment_form_user_title">Create New User</string>
     <string name="malformed_text_error">Text Input contains forbidden char</string>
     <string name="empty_text_error">Text Input is empty</string>
+    <string name="diabetes_type_two">Type 2</string>
+    <string name="diabetes_type_one">Type 1</string>
 </resources>

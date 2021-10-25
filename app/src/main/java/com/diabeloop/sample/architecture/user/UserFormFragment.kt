@@ -27,6 +27,8 @@ class UserFormFragment : Fragment() {
             userFormViewModel.saveUser()
         }
 
+        binding.diabetesTypeAutocomplete.setAdapter(DiabetesTypeAdapter(requireContext()))
+
         return binding.root
     }
 }

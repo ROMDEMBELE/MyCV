@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="userFormModel"
             type="com.diabeloop.sample.architecture.user.UserFormModel" />
@@ -12,6 +11,7 @@
         <variable
             name="saveUserButtonListener"
             type="android.view.View.OnClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,7 +55,25 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={userFormModel.lastName}" />
+                android:text="@={userFormModel.lastName}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/diabetes_type_dropdown"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/last_name_input">
+
+            <AutoCompleteTextView
+                android:id="@+id/diabetes_type_autocomplete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                app:diabetesType="@{userFormModel.diabetesType}"
+                tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -66,7 +84,7 @@
             android:enabled="@{userFormModel.validate}"
             android:onClick="@{saveUserButtonListener}"
             android:text="@string/fragment_user_form_save_user_button"
-            app:layout_constraintTop_toBottomOf="@id/last_name_input" />
+            app:layout_constraintTop_toBottomOf="@id/diabetes_type_dropdown" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

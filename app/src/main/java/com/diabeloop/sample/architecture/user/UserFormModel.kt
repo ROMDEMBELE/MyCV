@@ -2,13 +2,15 @@ package com.diabeloop.sample.architecture.user
 
 import androidx.databinding.BaseObservable
 import com.diabeloop.sample.architecture.common.extension.validateTextInput
+import com.diabeloop.sample.architecture.domain.user.DiabetesType
 import com.diabeloop.sample.architecture.domain.user.User
 import com.diabeloop.sample.architecture.error.InputError
 
 class UserFormModel(
     val id: Int? = null,
     firstName: String? = null,
-    lastName: String? = null
+    lastName: String? = null,
+    var diabetesType: DiabetesType? = null
 ) : BaseObservable() {
 
     var firstName: String? = null
@@ -48,5 +50,14 @@ class UserFormModel(
         isValidate = firstName != null && isValidate
         isValidate = lastName != null && isValidate
     }
+
+//    private fun checkError(): Boolean =
+//        when {
+//            firstName == null -> true
+//            firstNameError != null -> true
+//            lastName == null -> true
+//            lastNameError != null -> true
+//            else -> false
+//        }
 
 }

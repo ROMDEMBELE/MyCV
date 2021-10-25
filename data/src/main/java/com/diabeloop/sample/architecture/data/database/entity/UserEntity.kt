@@ -28,13 +28,13 @@ fun User.toUserEntity() :UserEntity {
     return userEntity
 }
 
-    id?.let {
-    UserEntity(firstName, lastName, diabetesType).apply { id = it }
-} ?: run {
-    UserEntity(firstName, lastName, diabetesType)
-}
-
-
-UserEntity(firstName, lastName, diabetesType).apply { id.let { this@toUserEntity.id } }
+//    id?.let {
+//    UserEntity(firstName, lastName, diabetesType).apply { id = it }
+//} ?: run {
+//    UserEntity(firstName, lastName, diabetesType)
+//}
+//
+//
+//UserEntity(firstName, lastName, diabetesType).apply { this@toUserEntity.id?.let { id = it } }
 
 
