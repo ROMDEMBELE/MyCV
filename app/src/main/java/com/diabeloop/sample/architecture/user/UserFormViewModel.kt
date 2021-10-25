@@ -2,20 +2,30 @@ package com.diabeloop.sample.architecture.user
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.diabeloop.sample.architecture.domain.user.DiabetesType
 import com.diabeloop.sample.architecture.domain.user.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class UserFormViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
 
-    val userFormModel = UserFormModel(null, null, null, null)
+    fun loadUser(id: Int?): Flow<UserFormModel> =
+        id?.let {
+            userRepository.getUser(id).map { it.toUserFormModel() }
+        } ?: run {
+            flow {
+                emit(UserFormModel())
+            }
+        }
 
-    fun saveUser() {
+    fun saveUser(userFormModel: UserFormModel) {
         viewModelScope.launch {
-            userFormModel.id = userRepository.save(userFormModel.toUser())
+            userRepository.save(userFormModel.toUser())
         }
     }
 }
+

@@ -7,4 +7,5 @@
     <string name="empty_text_error">Text Input is empty</string>
     <string name="diabetes_type_two">Type 2</string>
     <string name="diabetes_type_one">Type 1</string>
+    <string name="fragment_user_list_create_user">Create New User</string>
 </resources>

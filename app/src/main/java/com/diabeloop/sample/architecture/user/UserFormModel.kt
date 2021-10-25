@@ -10,10 +10,10 @@ class UserFormModel(
     var id: Int? = null,
     firstName: String? = null,
     lastName: String? = null,
-    var diabetesType: DiabetesType? = null
+    diabetesType: DiabetesType? = null
 ) : BaseObservable() {
 
-    var firstName: String? = null
+    var firstName: String? = firstName
         set(value) {
             firstNameError = value.validateTextInput()
             field = value
@@ -21,9 +21,16 @@ class UserFormModel(
             notifyChange()
         }
 
-    var lastName: String? = null
+    var lastName: String? = lastName
         set(value) {
             lastNameError = value.validateTextInput()
+            field = value
+            validate()
+            notifyChange()
+        }
+
+    var diabetesType: DiabetesType? = diabetesType
+        set (value) {
             field = value
             validate()
             notifyChange()
@@ -61,3 +68,5 @@ class UserFormModel(
 //        }
 
 }
+
+fun User.toUserFormModel() = UserFormModel(id, firstName, lastName, diabetesType)
