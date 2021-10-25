@@ -11,12 +11,11 @@ import javax.inject.Inject
 @HiltViewModel
 class UserFormViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
 
-    val userFormModel = UserFormModel(null, null, null, DiabetesType.TYPE_2)
+    val userFormModel = UserFormModel(null, null, null, null)
 
     fun saveUser() {
         viewModelScope.launch {
-            userRepository.save(userFormModel.toUser())
-            //vers mon fragment
+            userFormModel.id = userRepository.save(userFormModel.toUser())
         }
     }
 }

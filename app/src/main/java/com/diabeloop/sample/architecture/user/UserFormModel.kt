@@ -7,7 +7,7 @@ import com.diabeloop.sample.architecture.domain.user.User
 import com.diabeloop.sample.architecture.error.InputError
 
 class UserFormModel(
-    val id: Int? = null,
+    var id: Int? = null,
     firstName: String? = null,
     lastName: String? = null,
     var diabetesType: DiabetesType? = null
@@ -38,7 +38,7 @@ class UserFormModel(
         val firstName = this.firstName
         val lastName = this.lastName
         return if (firstName != null && lastName != null) {
-            User(id, firstName, lastName, null)
+            User(id, firstName, lastName, diabetesType)
         } else {
             throw ClassCastException("Unable to cast UserFormModel in User")
         }

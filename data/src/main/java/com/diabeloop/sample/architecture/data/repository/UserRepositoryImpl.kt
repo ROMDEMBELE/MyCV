@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 
 class UserRepositoryImpl(private val userDao: UserDao) : UserRepository {
 
-    override suspend fun save(user: User) = userDao.save(user.toUserEntity())
+    override suspend fun save(user: User) = userDao.save(user.toUserEntity()).toInt()
 
     override fun getList(): Flow<List<User>> =
         userDao.getUserList().map { it.map { userEntity -> userEntity.toUser() } }

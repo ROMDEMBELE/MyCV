@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class UserRepositoryImpl : UserRepository {
-    override suspend fun save(user: User) {
-
+    override suspend fun save(user: User) : Int {
+        return 0
     }
 
     override fun getList(): Flow<List<User>> = flow {
