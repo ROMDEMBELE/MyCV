@@ -1,3 +1,4 @@
+apply plugin: 'jacoco'
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
 
@@ -32,10 +33,47 @@ allprojects {
         minSdkVersion = 26
         targetSdkVersion = 30
     }
+
+    jacoco {
+        toolVersion "0.8.7"
+        // default reportsDirectory = $buildDir/reports/jacoco
+    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+task jacocoTestReport(type: JacocoReport) {
+    group = 'Reporting'
+    description = 'Generate Jacoco coverage reports after running tests.'
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+task jacocoTestCoverageVerification(type: JacocoCoverageVerification) {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.5
+            }
+        }
+
+        rule {
+            enabled = false
+            element = 'CLASS'
+            includes = ['org.gradle.*']
+
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                maximum = 0.3
+            }
+        }
+    }
 }
 
 
