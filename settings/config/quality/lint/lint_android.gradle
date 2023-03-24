@@ -5,6 +5,7 @@ android {
         htmlReport true
         explainIssues true
         lintConfig file("${project.qualityDir}/lint/lint.xml")
+        baseline file("lint-baseline.xml")
         htmlOutput = new File("${project.reportDir}/lint/${project.name}.html")
         xmlOutput = new File("${project.reportDir}/lint/${project.name}.xml")
     }

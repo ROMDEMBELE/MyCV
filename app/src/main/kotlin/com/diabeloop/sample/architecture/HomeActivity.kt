@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.diabeloop.architecture.R
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Main Activity.
+ */
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

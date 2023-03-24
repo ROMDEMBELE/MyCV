@@ -1,4 +1,4 @@
-package com.diabeloop.sample.architecture.common.extension
+package com.diabeloop.sample.architecture
 
 import android.content.Context
 import com.diabeloop.architecture.R
@@ -31,12 +31,18 @@ fun <T1 : Any, T2 : Any, R : Any> safeLet(
         null
     }
 
+/**
+ * Return an error if the string is not correct.
+ */
 fun String?.validateTextInput() = when {
     this.isNullOrEmpty() -> InputError.EMPTY_TEXT_ERROR
     this.matches(Regex(".*\\d.*")) -> InputError.MALFORMED_TEXT_ERROR
     else -> null
 }
 
+/**
+ * Convert [UserType] into String to display.
+ */
 fun UserType.toString(context: Context): String = when (this) {
     UserType.TYPE_1 -> context.getString(R.string.diabetes_type_one)
     UserType.TYPE_2 -> context.getString(R.string.diabetes_type_two)

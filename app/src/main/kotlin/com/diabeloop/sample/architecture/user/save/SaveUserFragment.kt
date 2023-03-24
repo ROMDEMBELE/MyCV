@@ -14,6 +14,9 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * Fragment, display form to save or modify user.
+ */
 @AndroidEntryPoint
 class SaveUserFragment : SaveUserPresenter, Fragment() {
 

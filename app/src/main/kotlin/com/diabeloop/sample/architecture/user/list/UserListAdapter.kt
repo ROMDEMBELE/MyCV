@@ -7,6 +7,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.diabeloop.architecture.databinding.ItemUserBinding
 
+/**
+ * Adapter for [User] list.
+ *
+ * @property presenter
+ */
 class UserListAdapter(private val presenter: UserListPresenter) :
     ListAdapter<UserItemModel, UserListAdapter.UserItemViewHolder>(
         DIFF_CALLBACK
@@ -16,16 +21,22 @@ class UserListAdapter(private val presenter: UserListPresenter) :
         UserItemViewHolder(
             ItemUserBinding.inflate(
                 LayoutInflater.from(parent.context),
-            parent,
-            false
+                parent,
+                false
             ),
-                presenter
+            presenter
         )
 
     override fun onBindViewHolder(holder: UserItemViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
+    /**
+     * ViewHolder for [UserItemModel].
+     *
+     * @property binding
+     * @property presenter
+     */
     // inner class go last before companion object
     inner class UserItemViewHolder(
         private val binding: ItemUserBinding,

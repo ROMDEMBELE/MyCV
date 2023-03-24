@@ -1,12 +1,19 @@
 package com.diabeloop.sample.architecture.user.save
 
 import androidx.databinding.BaseObservable
-import com.diabeloop.sample.architecture.common.extension.safeLet
-import com.diabeloop.sample.architecture.common.extension.validateTextInput
 import com.diabeloop.sample.architecture.domain.user.User
 import com.diabeloop.sample.architecture.domain.user.UserType
 import com.diabeloop.sample.architecture.error.InputError
+import com.diabeloop.sample.architecture.safeLet
+import com.diabeloop.sample.architecture.validateTextInput
 
+/**
+ * UiModel for [SaveUserFragment].
+ *
+ * @param firstName
+ * @param lastName
+ * @param type
+ */
 class SaveUserUiModel(
     var id: Int? = null,
     firstName: String? = null,
@@ -34,13 +41,25 @@ class SaveUserUiModel(
             notifyChange()
         }
 
+    /**
+     * @property lastNameError indicate error on lastName.
+     */
     var lastNameError: InputError? = null
 
+    /**
+     * @property firstNameError indicate error on firstName.
+     */
     var firstNameError: InputError? = null
 
+    /**
+     * @property isValidate boolean flag true if all field are correct.
+     */
     val isValidate: Boolean
         get() = lastNameError == null && firstNameError == null && firstName != null && lastName != null
 
+    /**
+     * Mapping method from [SaveUserUiModel] to [User].
+     */
     fun toUser(): User =
         safeLet(firstName, lastName) { safeFirstName, safeLastName ->
             User(

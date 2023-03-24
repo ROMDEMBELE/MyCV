@@ -3,9 +3,9 @@ package com.diabeloop.sample.architecture.binding
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.diabeloop.architecture.R
-import com.diabeloop.sample.architecture.common.extension.toString
 import com.diabeloop.sample.architecture.domain.user.UserType
 import com.diabeloop.sample.architecture.error.InputError
+import com.diabeloop.sample.architecture.toString
 import com.google.android.material.textfield.TextInputLayout
 
 @BindingAdapter("error")

@@ -14,6 +14,9 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * Fragment, display list of User.
+ */
 @AndroidEntryPoint
 class UserListFragment : UserListPresenter, Fragment() {
     private var _binding: FragmentUserListBinding? = null

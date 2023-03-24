@@ -1,5 +1,8 @@
 package com.diabeloop.sample.architecture.user.list
 
+/**
+ * Presenter interface for [UserListFragment].
+ */
 interface UserListPresenter {
 
     /**

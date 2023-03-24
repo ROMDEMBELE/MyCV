@@ -10,17 +10,22 @@ detekt {
     allRules = true
     autoCorrect = true
     config = files("${project.qualityDir}/detekt/detekt.yml")
-    setSource(files(rootProject.projectDir))
+}
 
+tasks.named("detekt").configure {
     reports {
-        xml {
-            enabled = true
-            destination = new File("${project.reportDir}/detekt/${project.name}.xml")
-        }
-        html {
-            enabled = true
-            destination = new File("${project.reportDir}/detekt/${project.name}.html")
-        }
+        xml.required.set(true)
+        xml.outputLocation.set(file("${project.reportDir}/detekt/${project.name}.xml"))
+
+        html.required.set(true)
+        html.outputLocation.set(file("${project.reportDir}/detekt/${project.name}.html"))
+
+        txt.required.set(true)
+        txt.outputLocation.set(file("${project.reportDir}/detekt/${project.name}.txt"))
+
+        sarif.required.set(true)
+        sarif.outputLocation.set(file("${project.reportDir}/detekt/${project.name}.sarif"))
     }
 }
+
 

@@ -1,11 +1,11 @@
 package com.diabeloop.sample.architecture.user.save
 
 import androidx.databinding.BaseObservable
-import com.diabeloop.sample.architecture.common.extension.safeLet
-import com.diabeloop.sample.architecture.common.extension.validateTextInput
 import com.diabeloop.sample.architecture.domain.user.User
 import com.diabeloop.sample.architecture.domain.user.UserType
 import com.diabeloop.sample.architecture.error.InputError
+import com.diabeloop.sample.architecture.safeLet
+import com.diabeloop.sample.architecture.validateTextInput
 
 class SaveUserUiModel(
     var id: Int? = null,
