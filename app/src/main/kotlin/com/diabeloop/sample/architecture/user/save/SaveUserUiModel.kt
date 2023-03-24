@@ -10,9 +10,7 @@ import com.diabeloop.sample.architecture.validateTextInput
 /**
  * UiModel for [SaveUserFragment].
  *
- * @param firstName
- * @param lastName
- * @param type
+ * @property id
  */
 class SaveUserUiModel(
     var id: Int? = null,
@@ -21,6 +19,9 @@ class SaveUserUiModel(
     type: UserType? = null,
 ) : BaseObservable() {
 
+    /**
+     * @property firstName
+     */
     var firstName: String? = firstName
         set(value) {
             firstNameError = value.validateTextInput()
@@ -28,6 +29,9 @@ class SaveUserUiModel(
             notifyChange()
         }
 
+    /**
+     * @property lastName
+     */
     var lastName: String? = lastName
         set(value) {
             lastNameError = value.validateTextInput()
@@ -35,6 +39,9 @@ class SaveUserUiModel(
             notifyChange()
         }
 
+    /**
+     * @property type
+     */
     var type: UserType? = type
         set(value) {
             field = value
@@ -73,4 +80,7 @@ class SaveUserUiModel(
         }
 }
 
+/**
+ * Mapping method from [User] to [SaveUserUiModel].
+ */
 fun User.toUserUiModel() = SaveUserUiModel(id, firstName, lastName, type)

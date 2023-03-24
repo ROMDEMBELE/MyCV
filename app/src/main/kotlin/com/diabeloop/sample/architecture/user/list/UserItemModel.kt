@@ -11,7 +11,7 @@ import com.diabeloop.sample.architecture.domain.user.UserType
  * @property lastName
  * @property type
  */
-class UserItemModel(
+data class UserItemModel(
     val id: Int,
     val firstName: String,
     val lastName: String,

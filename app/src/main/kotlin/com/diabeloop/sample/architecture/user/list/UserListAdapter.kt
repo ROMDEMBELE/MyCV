@@ -43,6 +43,9 @@ class UserListAdapter(private val presenter: UserListPresenter) :
         private val presenter: UserListPresenter,
     ) : RecyclerView.ViewHolder(binding.root) {
 
+        /**
+         * Bind viewHolder with item value.
+         */
         fun bind(user: UserItemModel) {
             binding.user = user
             binding.presenter = presenter
@@ -50,17 +53,20 @@ class UserListAdapter(private val presenter: UserListPresenter) :
     }
 
     companion object {
+        /**
+         * User item comparator.
+         */
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<UserItemModel>() {
-            override fun areItemsTheSame(oldItem: UserItemModel, newItem: UserItemModel): Boolean {
-                return oldItem.id == newItem.id
-            }
+            override fun areItemsTheSame(oldItem: UserItemModel, newItem: UserItemModel): Boolean =
+                oldItem.id == newItem.id
 
             override fun areContentsTheSame(
                 oldItem: UserItemModel,
                 newItem: UserItemModel,
-            ): Boolean = oldItem.firstName == newItem.firstName &&
-                    oldItem.lastName == newItem.lastName &&
-                    oldItem.type == newItem.type
+            ): Boolean =
+                oldItem.firstName == newItem.firstName &&
+                        oldItem.lastName == newItem.lastName &&
+                        oldItem.type == newItem.type
         }
     }
 }

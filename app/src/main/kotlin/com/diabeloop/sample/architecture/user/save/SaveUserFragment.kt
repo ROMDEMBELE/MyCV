@@ -22,7 +22,9 @@ class SaveUserFragment : SaveUserPresenter, Fragment() {
 
     private var _binding: FragmentSaveUserBinding? = null
     private val binding by lazy {
-        checkNotNull(_binding) { "ViewBinding ${FragmentSaveUserBinding::class} has been used outside view's lifecycle" }
+        checkNotNull(_binding) {
+            "ViewBinding ${FragmentSaveUserBinding::class} has been used outside view's lifecycle"
+        }
     }
 
     private val viewModel: SaveUserViewModel by viewModels()

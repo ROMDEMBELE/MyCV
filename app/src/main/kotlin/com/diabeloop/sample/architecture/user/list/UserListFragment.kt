@@ -21,7 +21,9 @@ import kotlinx.coroutines.launch
 class UserListFragment : UserListPresenter, Fragment() {
     private var _binding: FragmentUserListBinding? = null
     private val binding by lazy {
-        checkNotNull(_binding) { "ViewBinding ${FragmentUserListBinding::class} has been used outside view's lifecycle" }
+        checkNotNull(_binding) {
+            "ViewBinding ${FragmentUserListBinding::class} has been used outside view's lifecycle"
+        }
     }
     private val viewModel: UserListViewModel by viewModels()
 

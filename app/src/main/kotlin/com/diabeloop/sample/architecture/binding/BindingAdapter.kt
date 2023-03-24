@@ -29,5 +29,5 @@ fun TextInputLayout.setError(inputError: InputError?) {
  */
 @BindingAdapter("userType")
 fun TextView.setUserType(userType: UserType?) {
-    text = (userType?.toString(context))
+    text = userType?.toString(context)
 }
