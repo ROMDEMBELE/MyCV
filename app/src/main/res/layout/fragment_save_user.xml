@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="uiModel"
+            type="com.diabeloop.sample.architecture.user.save.SaveUserUiModel" />
+
+        <variable
+            name="presenter"
+            type="com.diabeloop.sample.architecture.user.save.SaveUserPresenter" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp"
+        tools:context="com.diabeloop.sample.architecture.user.save.SaveUserFragment">
+
+        <TextView
+            android:id="@+id/save_user_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/fragment_form_user_title"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/first_name_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="@string/firstname_label"
+            android:nextFocusDown="@id/last_name_input"
+            app:endIconMode="clear_text"
+            app:error="@{uiModel.firstNameError}"
+            app:errorEnabled="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/save_user_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:nextFocusDown="@id/last_name_input"
+                android:singleLine="true"
+                android:text="@={uiModel.firstName}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/last_name_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="@string/lastname_label"
+            android:nextFocusUp="@id/first_name_input"
+            app:endIconMode="clear_text"
+            app:error="@{uiModel.lastNameError}"
+            app:errorEnabled="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/first_name_input">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:singleLine="true"
+                android:text="@={uiModel.lastName}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/save_user_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="16dp"
+            android:enabled="@{uiModel.isValidate}"
+            android:onClick="@{() -> presenter.onSaveButtonClick()}"
+            android:text="@string/fragment_user_form_save_user_button"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

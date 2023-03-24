@@ -7,18 +7,23 @@
 
     <fragment
         android:id="@+id/userListFragment"
-        android:name="com.diabeloop.sample.architecture.user.UserListFragment"
+        android:name="com.diabeloop.sample.architecture.user.list.UserListFragment"
         android:label="fragment_user_list"
         tools:layout="@layout/fragment_user_list">
         <action
-            android:id="@+id/action_userListFragment_to_userFormFragment"
-            app:destination="@id/userFormFragment" />
+            android:id="@+id/action_userListFragment_to_saveUserFragment"
+            app:destination="@id/saveUserFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
     <fragment
-        android:id="@+id/userFormFragment"
-        android:name="com.diabeloop.sample.architecture.user.UserFormFragment"
+        android:id="@+id/saveUserFragment"
+        android:name="com.diabeloop.sample.architecture.user.save.SaveUserFragment"
         android:label="fragment_user_form"
-        tools:layout="@layout/fragment_user_form">
+        tools:layout="@layout/fragment_save_user">
         <argument
             android:name="userId"
             android:defaultValue="-1"

@@ -1,4 +1,3 @@
-apply plugin: 'jacoco'
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
 
@@ -10,12 +9,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:_"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:_"
-        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:_"
-        classpath "io.gitlab.arturbosch.detekt:detekt-formatting:_"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:_"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:_"
+        classpath Android.tools.build.gradlePlugin
+        classpath libs.kotlin.gradle.plugin
+        classpath libs.detekt.gradle.plugin
+        classpath libs.detekt.formatting
+        classpath Google.dagger.hilt.android.gradlePlugin
+        classpath AndroidX.navigation.safeArgsGradlePlugin
     }
 }
 
@@ -29,51 +28,14 @@ allprojects {
         detekt = "${project.rootDir}/settings/config/quality/detekt/detekt.gradle"
         qualityDir ="${project.rootDir}/settings/config/quality"
         reportDir = "${project.rootDir}/settings/reports"
-        compileSdkVersion = 30
-        minSdkVersion = 26
+        compileSdkVersion = 33
+        minSdkVersion = 30
         targetSdkVersion = 30
-    }
-
-    jacoco {
-        toolVersion "0.8.7"
-        // default reportsDirectory = $buildDir/reports/jacoco
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-task jacocoTestReport(type: JacocoReport) {
-    group = 'Reporting'
-    description = 'Generate Jacoco coverage reports after running tests.'
-    reports {
-        xml.required = false
-        csv.required = false
-        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
-    }
-}
-
-task jacocoTestCoverageVerification(type: JacocoCoverageVerification) {
-    violationRules {
-        rule {
-            limit {
-                minimum = 0.5
-            }
-        }
-
-        rule {
-            enabled = false
-            element = 'CLASS'
-            includes = ['org.gradle.*']
-
-            limit {
-                counter = 'LINE'
-                value = 'TOTALCOUNT'
-                maximum = 0.3
-            }
-        }
-    }
 }
 
 

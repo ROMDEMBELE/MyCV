@@ -7,5 +7,11 @@
     <string name="empty_text_error">Text Input is empty</string>
     <string name="diabetes_type_two">Type 2</string>
     <string name="diabetes_type_one">Type 1</string>
-    <string name="fragment_user_list_create_user">Create New User</string>
+    <string name="fragment_user_list_create_user">Add New Item</string>
+    <string name="firstname_label">First Name</string>
+    <string name="lastname_label">Last Name</string>
+    <string name="user_delete_success_message">User successfully deleted</string>
+    <string name="user_delete_failure_message">User not deleted</string>
+    <string name="user_save_success_message">User modification saved</string>
+    <string name="user_save_failure_message">User modification save has failed</string>
 </resources>

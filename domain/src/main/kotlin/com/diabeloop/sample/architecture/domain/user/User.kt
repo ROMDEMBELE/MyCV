@@ -1,8 +1,16 @@
 package com.diabeloop.sample.architecture.domain.user
 
+/**
+ * Data class representing user.
+ *
+ * @property id identifier in database.
+ * @property firstName
+ * @property lastName
+ * @property type
+ */
 data class User(
-    val id: Int?,
+    val id: Int? = null,
     val firstName: String,
     val lastName: String,
-    val diabetesType: DiabetesType? = null
+    val type: UserType,
 )

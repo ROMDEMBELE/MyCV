@@ -52,20 +52,6 @@ android {
         viewBinding true
     }
 
-    flavorDimensions "branch"
-
-    productFlavors {
-
-        mock {
-            dimension "branch"
-        }
-
-        external {
-            dimension "branch"
-        }
-
-    }
-
     variantFilter { variant ->
         def names = variant.flavors*.name
         if (names.contains("mock")
@@ -74,29 +60,32 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = 11
     }
+    namespace 'com.diabeloop.architecture'
 }
 
 dependencies {
     implementation project(":domain")
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    externalImplementation project(":data")
-    mockImplementation project(":data-mock")
+    implementation project(":data")
+    implementation Kotlin.stdlib
+    implementation AndroidX.constraintLayout
+    implementation AndroidX.navigation.fragmentKtx
+    implementation AndroidX.navigation.uiKtx
+    implementation AndroidX.appCompat
+    implementation Google.android.material
+    implementation Google.dagger.hilt.android
 
-    implementation "androidx.appcompat:appcompat:_"
+    testImplementation KotlinX.coroutines.test
+    testImplementation Testing.junit.jupiter
+    testImplementation "io.mockk:mockk:_"
+    testImplementation Testing.junit4
 
-    implementation "com.google.android.material:material:_"
+    kapt(Google.dagger.hilt.android.compiler)
 
-    implementation "com.google.dagger:hilt-android:_"
-    kapt("com.google.dagger:hilt-android-compiler:_")
-
-    implementation "androidx.navigation:navigation-fragment-ktx:_"
-    implementation "androidx.navigation:navigation-ui-ktx:_"
 }

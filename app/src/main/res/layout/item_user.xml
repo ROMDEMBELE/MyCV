@@ -4,47 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="presenter"
-            type="com.diabeloop.sample.architecture.user.UserListAdapter.UserItemPresenter" />
+            type="com.diabeloop.sample.architecture.user.list.UserListPresenter" />
+
         <variable
             name="user"
-            type="com.diabeloop.sample.architecture.user.UserItemModel" />
+            type="com.diabeloop.sample.architecture.user.list.UserItemModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:onClick="@{() -> presenter.onClick(user)}"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="2dp"
-        android:padding="10dp">
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:elevation="2dp"
+        app:cardCornerRadius="8dp">
 
-        <TextView
-            android:id="@+id/user_first_name"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{user.firstName}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="FirstName" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/user_last_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{user.lastName}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_first_name"
-            tools:text="LastName" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_imageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/user_diabetes_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:diabetesType="@{user.diabetesType}"
-            app:layout_constraintTop_toBottomOf="@id/user_last_name"
-            tools:text="TYPE_1" />
+            <TextView
+                android:id="@+id/user_first_name"
+                style="@style/BasicText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@{user.firstName}"
+                app:layout_constraintStart_toEndOf="@id/profile_imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="FirstName" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/user_last_name"
+                style="@style/BasicText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:text="@{user.lastName}"
+                app:layout_constraintStart_toStartOf="@id/user_first_name"
+                app:layout_constraintTop_toBottomOf="@id/user_first_name"
+                tools:text="LastName" />
+
+            <TextView
+                android:id="@+id/user_diabetes_type"
+                style="@style/BasicText"
+                userType="@{user.type}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/user_first_name"
+                app:layout_constraintTop_toBottomOf="@id/user_last_name"
+                tools:text="TYPE_1" />
+
+            <ImageView
+                android:id="@+id/edit_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:onClick="@{() -> presenter.onModifyUserClick(user.id)}"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/delete_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@android:color/white"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/delete_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:onClick="@{() -> presenter.onDeleteUserClick(user.id)}"
+                android:src="@drawable/ic_baseline_delete_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@android:color/white"
+                tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </layout>

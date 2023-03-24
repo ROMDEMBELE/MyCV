@@ -1,5 +1,5 @@
 plugins {
-    id("de.fayard.refreshVersions") version "0.23.0"
+    id("de.fayard.refreshVersions") version "0.51.0"
 }
 
 refreshVersions {
@@ -12,4 +12,3 @@ rootProject.name = "ArchitectureSample"
 include ':app'
 include ':domain'
 include ':data'
-include ':data-mock'

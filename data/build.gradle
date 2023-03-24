@@ -15,15 +15,29 @@ android {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
     }
+    namespace 'com.diabeloop.sample.architecture.data'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget=11
+    }
 }
+
 
 dependencies {
     implementation project(":domain")
 
-    implementation "androidx.room:room-ktx:_"
-    kapt "androidx.room:room-compiler:_"
-    api "androidx.room:room-runtime:_"
+    implementation AndroidX.room.ktx
+    implementation AndroidX.test.ext.junit
+    testImplementation Testing.junit.jupiter
+    androidTestImplementation Testing.junit4
+    api AndroidX.room.runtime
 
-    implementation "com.google.dagger:hilt-android:_"
-    kapt("com.google.dagger:hilt-android-compiler:_")
+    implementation Google.dagger.hilt.android
+
+    kapt AndroidX.room.compiler
+    kapt Google.dagger.hilt.android.compiler
 }
